@@ -9,12 +9,12 @@ export default function NestedScreen() {
         <Button title="Push to /second/also-nested" />
       </Link>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "gray",
-    justifyContent: "center"
-  }
-})
+    justifyContent: "center",
+  },
+});

@@ -5,12 +5,12 @@ export default function SecondNestedScreen() {
     <View style={styles.container}>
       <Text>Second Screen</Text>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "gray",
-    justifyContent: "center"
-  }
-})
+    justifyContent: "center",
+  },
+});

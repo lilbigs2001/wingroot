@@ -5,12 +5,12 @@ export default function FourthScreen() {
     <View style={styles.container}>
       <Text>Fourth Screen</Text>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "gray",
-    justifyContent: "center"
-  }
-})
+    justifyContent: "center",
+  },
+});

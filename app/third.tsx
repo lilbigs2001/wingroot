@@ -5,12 +5,12 @@ export default function ThirdScreen() {
     <View style={styles.container}>
       <Text>Third Screen</Text>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "gray",
-    justifyContent: "center"
-  }
-})
+    justifyContent: "center",
+  },
+});
