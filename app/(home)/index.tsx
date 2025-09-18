@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Button, Image, StyleSheet, Text, View } from "react-native";
 
 export default function IndexScreen() {
   return (
@@ -6,6 +6,7 @@ export default function IndexScreen() {
       <View className="flex-1 items-center justify-center bg-white">
         <Text className="text-xl font-bold text-blue-500">Wingroot</Text>
       </View>
+      <Button title="Plan your garden" />
       <Image
         className="size-32"
         source={require("../../assets/icons/adaptive-icon.png")}

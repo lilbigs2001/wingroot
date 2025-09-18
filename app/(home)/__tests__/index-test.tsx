@@ -11,3 +11,10 @@ it("displays the app icon", () => {
   const appIcon = screen.getByLabelText("Wingroot logo");
   expect(appIcon).toBeOnTheScreen();
 });
+
+it("displays 'Plan your garden' button", () => {
+  render(<IndexScreen />);
+  expect(
+    screen.getByRole("button", { name: "Plan your garden" }),
+  ).toBeOnTheScreen();
+});
