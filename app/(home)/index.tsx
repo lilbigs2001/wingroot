@@ -7,6 +7,11 @@ export default function IndexScreen() {
         <Text className="text-xl font-bold text-blue-500">Wingroot</Text>
       </View>
       <Button title="Plan your garden" />
+      <Text>
+        {
+          "(Plant suggestions are currently tailored for the Great Lakes region — more regions coming soon!)"
+        }
+      </Text>
       <Image
         className="size-32"
         source={require("../../assets/icons/adaptive-icon.png")}

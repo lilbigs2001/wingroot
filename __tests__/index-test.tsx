@@ -18,3 +18,12 @@ it("displays 'Plan your garden' button", () => {
     screen.getByRole("button", { name: "Plan your garden" }),
   ).toBeOnTheScreen();
 });
+
+it("renders regional planting disclaimer", () => {
+  render(<IndexScreen />);
+  expect(
+    screen.getByRole("text", {
+      name: "(Plant suggestions are currently tailored for the Great Lakes region — more regions coming soon!)",
+    }),
+  ).toBeOnTheScreen();
+});
