@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react-native";
-import IndexScreen from "..";
+import IndexScreen from "../app/(home)/index";
 
 it("renders the app name", () => {
   render(<IndexScreen />);
