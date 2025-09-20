@@ -1,3 +1,10 @@
+import {
+  HELP_US_IMPROVE,
+  PLAN_YOUR_GARDEN,
+  REGIONAL_DISCLAIMER,
+  WINGROOT,
+  WINGROOT_LOGO_LABEL,
+} from "@/constants";
 import { Image, Pressable, Text, View } from "react-native";
 
 // Tackling layout with step 1 of CSS Layout guide
@@ -16,12 +23,12 @@ export default function IndexScreen() {
           <Image
             className="size-24 mr-16"
             source={require("../../assets/icons/in-app-logo.png")}
-            accessibilityLabel="Wingroot logo"
+            accessibilityLabel={WINGROOT_LOGO_LABEL}
           />
         </View>
         <View className="flex items-center">
           <Text className="text-5xl font-bold text-blue-500 underline">
-            Wingroot
+            {WINGROOT}
           </Text>
         </View>
       </View>
@@ -30,16 +37,12 @@ export default function IndexScreen() {
           className="bg-green-400 w-3/4 h-1/3 rounded-full flex justify-center items-center"
           accessibilityRole="button"
         >
-          <Text className="text-2xl font-semibold">Plan your garden</Text>
+          <Text className="text-2xl font-semibold">{PLAN_YOUR_GARDEN}</Text>
         </Pressable>
-        <Text className="m-8 text-xl">
-          {
-            "(Plant suggestions are currently tailored for the Great Lakes region — more regions coming soon!)"
-          }
-        </Text>
+        <Text className="m-8 text-xl">{REGIONAL_DISCLAIMER}</Text>
       </View>
       <Pressable accessibilityRole="button">
-        <Text>Help us improve!</Text>
+        <Text>{HELP_US_IMPROVE}</Text>
       </Pressable>
       {/* <View style={styles.container}>
         <Text>Home Screen</Text>

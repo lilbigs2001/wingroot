@@ -1,21 +1,28 @@
+import {
+  HELP_US_IMPROVE,
+  PLAN_YOUR_GARDEN,
+  REGIONAL_DISCLAIMER,
+  WINGROOT,
+  WINGROOT_LOGO_LABEL,
+} from "@/constants";
 import { render, screen } from "@testing-library/react-native";
 import IndexScreen from "../app/(home)/index";
 
 it("renders the app name", () => {
   render(<IndexScreen />);
-  expect(screen.getByRole("text", { name: "Wingroot" })).toBeOnTheScreen();
+  expect(screen.getByRole("text", { name: WINGROOT })).toBeOnTheScreen();
 });
 
 it("displays the app icon", () => {
   render(<IndexScreen />);
-  const appIcon = screen.getByLabelText("Wingroot logo");
+  const appIcon = screen.getByLabelText(WINGROOT_LOGO_LABEL);
   expect(appIcon).toBeOnTheScreen();
 });
 
-it("displays 'Plan your garden' button", () => {
+it(`displays ${PLAN_YOUR_GARDEN} button`, () => {
   render(<IndexScreen />);
   expect(
-    screen.getByRole("button", { name: "Plan your garden" }),
+    screen.getByRole("button", { name: PLAN_YOUR_GARDEN }),
   ).toBeOnTheScreen();
 });
 
@@ -23,14 +30,14 @@ it("renders regional planting disclaimer", () => {
   render(<IndexScreen />);
   expect(
     screen.getByRole("text", {
-      name: "(Plant suggestions are currently tailored for the Great Lakes region — more regions coming soon!)",
+      name: REGIONAL_DISCLAIMER,
     }),
   ).toBeOnTheScreen();
 });
 
-it("displays 'Help us improve!' button", () => {
+it(`displays ${HELP_US_IMPROVE} button`, () => {
   render(<IndexScreen />);
   expect(
-    screen.getByRole("button", { name: "Help us improve!" }),
+    screen.getByRole("button", { name: HELP_US_IMPROVE }),
   ).toBeOnTheScreen();
 });
