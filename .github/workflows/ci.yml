@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  builds:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 24.7.0
+      - run: npm ci
+      - name: TypeScript Check
+        run: npx tsc --noEmit
+      - name: ESLint
+        run: npx eslint . --ext .ts,.tsx
+      - name: Run Tests
+        run: npm test -- --coverage --passWithNoTests
+      - name: Expo Prebuild Check
+        run: npx expo prebuild --no-install
