@@ -21,6 +21,6 @@ jobs:
       - name: ESLint
         run: npx eslint . --ext .ts,.tsx
       - name: Run Tests
-        run: npm test -- --coverage --passWithNoTests
+        run: npm test -- --coverage --passWithNoTests --forceExit
       - name: Expo Prebuild Check
         run: npx expo prebuild --no-install
