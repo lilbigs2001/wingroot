@@ -27,3 +27,10 @@ it("renders regional planting disclaimer", () => {
     }),
   ).toBeOnTheScreen();
 });
+
+it("displays 'Help us improve!' button", () => {
+  render(<IndexScreen />);
+  expect(
+    screen.getByRole("button", { name: "Help us improve!" }),
+  ).toBeOnTheScreen();
+});

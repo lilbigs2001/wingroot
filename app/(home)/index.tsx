@@ -38,6 +38,9 @@ export default function IndexScreen() {
           }
         </Text>
       </View>
+      <Pressable accessibilityRole="button">
+        <Text>Help us improve!</Text>
+      </Pressable>
       {/* <View style={styles.container}>
         <Text>Home Screen</Text>
         <Link href="/nested-home" push asChild>
