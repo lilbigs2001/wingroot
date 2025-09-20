@@ -21,6 +21,21 @@ export default function RootLayout() {
           options={{
             headerShown: false,
             title: "Home",
+            tabBarLabel: "Home",
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons
+                name="beehive-outline"
+                size={size}
+                color={color}
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="second"
+          options={{
+            headerShown: false,
+            title: "Pollinator Info",
             tabBarLabel: "Pollinator Info",
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="bee" size={size} color={color} />
@@ -28,7 +43,7 @@ export default function RootLayout() {
           }}
         />
         <Tabs.Screen
-          name="second"
+          name="third"
           options={{
             title: "Plant Library",
             headerShown: false,
