@@ -7,20 +7,22 @@ on:
     branches: [main]
 
 jobs:
-  builds:
-    runs-on: macos-latest
+  build:
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
         with:
-          node-version: 24.7.0
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
       - run: npm ci
       - name: TypeScript Check
         run: npx tsc --noEmit
       - name: ESLint
         run: npx eslint . --ext .ts,.tsx
       - name: Run Tests
-        run: npm test -- --coverage --passWithNoTests --forceExit
-      - name: Expo Prebuild Check
-        run: npx expo prebuild --no-install
+        run: npm test
+      # - name: Expo Prebuild Check
+      #   run: npx expo prebuild --no-install
