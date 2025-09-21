@@ -23,6 +23,6 @@ jobs:
       - name: ESLint
         run: npx eslint . --ext .ts,.tsx
       - name: Run Tests
-        run: npm run jest
+        run: jest
       # - name: Expo Prebuild Check
       #   run: npx expo prebuild --no-install
