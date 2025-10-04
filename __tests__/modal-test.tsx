@@ -10,3 +10,8 @@ it("has correct text", () => {
     }),
   ).toBeOnTheScreen();
 });
+
+it("displays Yes button", () => {
+  render(<StepperWizard />);
+  expect(screen.getByRole("button", { name: "Yes" })).toBeOnTheScreen();
+});
