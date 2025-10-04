@@ -1,9 +1,9 @@
-import StepperWizard from "@/app/modal";
+import SoilMoisturePage from "@/app/(modal)";
 import { NO, SOIL_MOISTURE_QUESTION, YES } from "@/constants";
 import { render, screen } from "@testing-library/react-native";
 
 it("has correct text", () => {
-  render(<StepperWizard />);
+  render(<SoilMoisturePage />);
   expect(
     screen.getByRole("text", {
       name: SOIL_MOISTURE_QUESTION,
@@ -12,11 +12,11 @@ it("has correct text", () => {
 });
 
 it(`displays ${YES} button`, () => {
-  render(<StepperWizard />);
+  render(<SoilMoisturePage />);
   expect(screen.getByRole("button", { name: YES })).toBeOnTheScreen();
 });
 
 it(`displays ${NO} button`, () => {
-  render(<StepperWizard />);
+  render(<SoilMoisturePage />);
   expect(screen.getByRole("button", { name: NO })).toBeOnTheScreen();
 });

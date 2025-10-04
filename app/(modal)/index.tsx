@@ -1,18 +1,19 @@
 import { NO, SOIL_MOISTURE_QUESTION, YES } from "@/constants";
+import { Link } from "expo-router";
 import { Pressable, Text, View } from "react-native";
 
-const StepperWizard = () => {
+const SoilMoisturePage = () => {
   return (
     <View>
       <Text>{SOIL_MOISTURE_QUESTION}</Text>
       <Pressable accessibilityRole="button">
-        <Text>{YES}</Text>
+        <Link href="/(modal)/sun-page">{YES}</Link>
       </Pressable>
       <Pressable accessibilityRole="button">
-        <Text>{NO}</Text>
+        <Link href="/(modal)/sun-page">{NO}</Link>
       </Pressable>
     </View>
   );
 };
 
-export default StepperWizard;
+export default SoilMoisturePage;

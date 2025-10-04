@@ -38,7 +38,7 @@ export default function IndexScreen() {
           className="bg-green-400 w-3/4 h-1/3 rounded-full flex justify-center items-center"
           accessibilityRole="button"
         >
-          <Link href="/modal" className="text-2xl font-semibold">
+          <Link href="/(modal)" className="text-2xl font-semibold">
             {PLAN_YOUR_GARDEN}
           </Link>
         </Pressable>
