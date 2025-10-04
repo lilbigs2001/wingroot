@@ -1,0 +1,5 @@
+appId: com.joebigelow.wingroot
+---
+- launchApp
+- tapOn: "Plan your garden"
+- assertVisible: "Is your soil dry, dry to moist, moist, moist to wet, wet, dry to wet, or a combination?"

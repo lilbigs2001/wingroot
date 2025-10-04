@@ -11,7 +11,7 @@
     "lint": "expo lint",
     "test": "jest",
     "test:watch": "jest --watchAll",
-    "e2e:test": "maestro test e2e/flows --no-screenshots --no-video",
+    "e2e:test": "maestro test e2e/flows",
     "clean:maestro": "rm -rf ~/.maestro/tests/*"
   },
   "dependencies": {

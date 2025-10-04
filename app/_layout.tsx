@@ -1,7 +1,4 @@
-import Entypo from "@expo/vector-icons/Entypo";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import { Tabs } from "expo-router";
-import { StatusBar } from "expo-status-bar";
+import { Stack } from "expo-router";
 import "../global.css";
 
 // SplashScreen.preventAutoHideAsync();
@@ -13,9 +10,19 @@ import "../global.css";
 
 export default function RootLayout() {
   return (
-    <>
-      <StatusBar style="auto" />
-      <Tabs screenOptions={{ tabBarActiveTintColor: "teal" }}>
+    <Stack>
+      <Stack.Screen name="index" />
+      <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+    </Stack>
+  );
+}
+
+{
+  /* <StatusBar style="auto" />
+      <Stack.Screen></Stack.Screen> */
+}
+{
+  /* <Tabs screenOptions={{ tabBarActiveTintColor: "teal" }}>
         <Tabs.Screen
           name="(home)"
           options={{
@@ -52,7 +59,5 @@ export default function RootLayout() {
             ),
           }}
         />
-      </Tabs>
-    </>
-  );
+      </Tabs> */
 }
