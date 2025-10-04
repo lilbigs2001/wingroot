@@ -2,7 +2,7 @@
 
 ## What is Wingroot?
 
-Wingroot is a mobile app that helps people create beautiful, sustainable gardens and landscapes. Whether you have a large yard or a few square feet on your balcony, you can boost your local ecosystem by supporting native pollinators.
+Wingroot is a mobile app that helps people create beautiful, sustainable gardens and landscapes. One of the best ways to boost your local ecosystem is by supporting native pollinators.
 
 (To learn more about the importance of invertebrate conservation, go to [Xerces.org](https://xerces.org))
 

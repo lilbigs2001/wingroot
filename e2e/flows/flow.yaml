@@ -1,0 +1,4 @@
+appId: com.joebigelow.wingroot
+---
+- launchApp
+- tapOn: "Plan your garden"

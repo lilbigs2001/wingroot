@@ -9,6 +9,15 @@ dist/
 web-build/
 expo-env.d.ts
 
+# iOS
+ios/
+
+# Android
+android/
+
+# Maestro artifacts
+e2e/artifacts
+
 # Native
 .kotlin/
 *.orig.*
@@ -35,6 +44,10 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# Misc
+*.log
+*.apk
 
 app-example
 coverage

@@ -22,7 +22,7 @@ export default function IndexScreen() {
         <View className="flex items-end">
           <Image
             className="size-24 mr-16"
-            source={require("../../assets/icons/in-app-logo.png")}
+            source={require("../assets/icons/in-app-logo.png")}
             accessibilityLabel={WINGROOT_LOGO_LABEL}
           />
         </View>

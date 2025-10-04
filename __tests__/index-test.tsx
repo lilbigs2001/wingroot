@@ -6,7 +6,7 @@ import {
   WINGROOT_LOGO_LABEL,
 } from "@/constants";
 import { render, screen } from "@testing-library/react-native";
-import IndexScreen from "../app/(home)/index";
+import IndexScreen from "../app/index";
 
 it("renders the app name", () => {
   render(<IndexScreen />);
