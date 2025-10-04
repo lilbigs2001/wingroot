@@ -1,4 +1,4 @@
-import { SOIL_MOISTURE_QUESTION } from "@/constants";
+import { NO, SOIL_MOISTURE_QUESTION, YES } from "@/constants";
 import { Pressable, Text, View } from "react-native";
 
 const StepperWizard = () => {
@@ -6,7 +6,10 @@ const StepperWizard = () => {
     <View>
       <Text>{SOIL_MOISTURE_QUESTION}</Text>
       <Pressable accessibilityRole="button">
-        <Text>Yes</Text>
+        <Text>{YES}</Text>
+      </Pressable>
+      <Pressable accessibilityRole="button">
+        <Text>{NO}</Text>
       </Pressable>
     </View>
   );

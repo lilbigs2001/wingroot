@@ -6,3 +6,5 @@ export const REGIONAL_DISCLAIMER =
 export const HELP_US_IMPROVE = "Help us improve!";
 export const SOIL_MOISTURE_QUESTION =
   "Is your soil dry, dry to moist, moist, moist to wet, wet, dry to wet, or a combination?";
+export const YES = "Yes";
+export const NO = "No";
