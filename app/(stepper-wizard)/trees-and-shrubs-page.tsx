@@ -1,22 +1,13 @@
-import { NO, TREES_AND_SHRUBS_QUESTION, YES } from "@/constants";
-import { Link } from "expo-router";
-import { Pressable, Text, View } from "react-native";
+import StepperWizardStep from "@/components/StepperWizardStep";
+import { TREES_AND_SHRUBS_QUESTION } from "@/constants";
 
 const TreesAndShrubsPage = () => {
   return (
-    <View>
-      <Text>{TREES_AND_SHRUBS_QUESTION}</Text>
-      <Pressable accessibilityRole="button">
-        <Link replace href="/results">
-          {YES}
-        </Link>
-      </Pressable>
-      <Pressable accessibilityRole="button">
-        <Link replace href="/results">
-          {NO}
-        </Link>
-      </Pressable>
-    </View>
+    <StepperWizardStep
+      question={TREES_AND_SHRUBS_QUESTION}
+      link="/results"
+      replace={true}
+    />
   );
 };
 

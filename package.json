@@ -65,15 +65,6 @@
     "typescript": "~5.9.2"
   },
   "jest": {
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "**/*.{ts,tsx,js,jsx}",
-      "!**/coverage/**",
-      "!**/node_modules/**",
-      "!**/babel.config.js",
-      "!**/expo-env.d.ts",
-      "!**/.expo/**"
-    ],
     "preset": "jest-expo"
   },
   "private": true
