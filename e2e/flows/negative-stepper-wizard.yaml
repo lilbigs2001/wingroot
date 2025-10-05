@@ -9,3 +9,8 @@ appId: com.joebigelow.wingroot
 - assertVisible: "Are deer eating your vegetation a concern?"
 - tapOn: "No"
 - assertVisible: "Are you looking to plant trees and/or shrubs?"
+- tapOn: "No"
+- assertVisible: "Your Customized Planting List"
+- swipe:
+    direction: DOWN
+- assertNotVisible: "Are you looking to plant trees and/or shrubs?"

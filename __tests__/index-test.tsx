@@ -5,12 +5,12 @@ import {
   WINGROOT,
   WINGROOT_LOGO_LABEL,
 } from "@/constants";
+import { checkForButton, checkForText } from "@/test-utils";
 import { render, screen } from "@testing-library/react-native";
 import IndexScreen from "../app/index";
 
 it("renders the app name", () => {
-  render(<IndexScreen />);
-  expect(screen.getByRole("text", { name: WINGROOT })).toBeOnTheScreen();
+  checkForText(WINGROOT, IndexScreen());
 });
 
 it("displays the app icon", () => {
@@ -20,24 +20,13 @@ it("displays the app icon", () => {
 });
 
 it(`displays ${PLAN_YOUR_GARDEN} button`, () => {
-  render(<IndexScreen />);
-  expect(
-    screen.getByRole("button", { name: PLAN_YOUR_GARDEN }),
-  ).toBeOnTheScreen();
+  checkForButton(PLAN_YOUR_GARDEN, IndexScreen());
 });
 
 it("renders regional planting disclaimer", () => {
-  render(<IndexScreen />);
-  expect(
-    screen.getByRole("text", {
-      name: REGIONAL_DISCLAIMER,
-    }),
-  ).toBeOnTheScreen();
+  checkForText(REGIONAL_DISCLAIMER, IndexScreen());
 });
 
 it(`displays ${HELP_US_IMPROVE} button`, () => {
-  render(<IndexScreen />);
-  expect(
-    screen.getByRole("button", { name: HELP_US_IMPROVE }),
-  ).toBeOnTheScreen();
+  checkForButton(HELP_US_IMPROVE, IndexScreen());
 });

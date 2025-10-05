@@ -1,4 +1,5 @@
 import { NO, TREES_AND_SHRUBS_QUESTION, YES } from "@/constants";
+import { Link } from "expo-router";
 import { Pressable, Text, View } from "react-native";
 
 const TreesAndShrubsPage = () => {
@@ -6,10 +7,14 @@ const TreesAndShrubsPage = () => {
     <View>
       <Text>{TREES_AND_SHRUBS_QUESTION}</Text>
       <Pressable accessibilityRole="button">
-        <Text>{YES}</Text>
+        <Link replace href="/results">
+          {YES}
+        </Link>
       </Pressable>
       <Pressable accessibilityRole="button">
-        <Text>{NO}</Text>
+        <Link replace href="/results">
+          {NO}
+        </Link>
       </Pressable>
     </View>
   );

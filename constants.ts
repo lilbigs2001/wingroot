@@ -13,3 +13,4 @@ export const SUN_QUESTION =
 export const DEER_QUESTION = "Are deer eating your vegetation a concern?";
 export const TREES_AND_SHRUBS_QUESTION =
   "Are you looking to plant trees and/or shrubs?";
+export const YOUR_CUSTOMIZED_PLANTING_LIST = "Your Customized Planting List";

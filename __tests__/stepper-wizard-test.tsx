@@ -10,7 +10,7 @@ import {
   TREES_AND_SHRUBS_QUESTION,
   YES,
 } from "@/constants";
-import { render, screen } from "@testing-library/react-native";
+import { checkForButton, checkForText } from "@/test-utils";
 
 describe.each([
   ["Soil Moisture Page", SoilMoisturePage, SOIL_MOISTURE_QUESTION],
@@ -19,17 +19,14 @@ describe.each([
   ["Trees and Shrubs Page", TreesAndShrubsPage, TREES_AND_SHRUBS_QUESTION],
 ])("%s has required elements", (_, component, text) => {
   it("has correct text", () => {
-    render(component());
-    expect(screen.getByRole("text", { name: text })).toBeOnTheScreen();
+    checkForText(text, component());
   });
 
   it(`displays ${YES} button`, () => {
-    render(component());
-    expect(screen.getByRole("button", { name: YES })).toBeOnTheScreen();
+    checkForButton(YES, component());
   });
 
   it(`displays ${NO} button`, () => {
-    render(component());
-    expect(screen.getByRole("button", { name: NO })).toBeOnTheScreen();
+    checkForButton(NO, component());
   });
 });
