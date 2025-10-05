@@ -5,3 +5,5 @@ appId: com.joebigelow.wingroot
 - assertVisible: "Is your soil dry, dry to moist, moist, moist to wet, wet, dry to wet, or a combination?"
 - tapOn: "No"
 - assertVisible: "Does your space get full sun, partial sun, or shade?"
+- tapOn: "No"
+- assertVisible: "Are deer eating your vegetation a concern?"

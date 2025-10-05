@@ -1,4 +1,5 @@
 import { NO, SUN_QUESTION, YES } from "@/constants";
+import { Link } from "expo-router";
 import { Pressable, Text, View } from "react-native";
 
 const SunPage = () => {
@@ -6,10 +7,10 @@ const SunPage = () => {
     <View>
       <Text>{SUN_QUESTION}</Text>
       <Pressable accessibilityRole="button">
-        <Text>{YES}</Text>
+        <Link href="/(modal)/deer-page">{YES}</Link>
       </Pressable>
       <Pressable accessibilityRole="button">
-        <Text>{NO}</Text>
+        <Link href="/(modal)/deer-page">{NO}</Link>
       </Pressable>
     </View>
   );

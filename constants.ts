@@ -10,3 +10,4 @@ export const YES = "Yes";
 export const NO = "No";
 export const SUN_QUESTION =
   "Does your space get full sun, partial sun, or shade?";
+export const DEER_QUESTION = "Are deer eating your vegetation a concern?";
