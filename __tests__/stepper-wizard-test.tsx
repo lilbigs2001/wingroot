@@ -10,7 +10,6 @@ import {
   TREES_AND_SHRUBS_QUESTION,
   YES,
 } from "@/constants";
-import { checkForText } from "@/test-utils";
 import { render, screen } from "@testing-library/react-native";
 
 describe.each([
@@ -18,9 +17,10 @@ describe.each([
   ["Sun Page", SunPage, SUN_QUESTION],
   ["Deer Page", DeerPage, DEER_QUESTION],
   ["Trees and Shrubs Page", TreesAndShrubsPage, TREES_AND_SHRUBS_QUESTION],
-])("%s has required elements", (title, component, text) => {
+])("%s has required elements", (_, component, text) => {
   it("has correct text", () => {
-    checkForText(text, component());
+    render(component());
+    expect(screen.getByRole("text", { name: text })).toBeOnTheScreen();
   });
 
   it(`displays ${YES} button`, () => {
