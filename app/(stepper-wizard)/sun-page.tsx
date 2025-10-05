@@ -7,10 +7,10 @@ const SunPage = () => {
     <View>
       <Text>{SUN_QUESTION}</Text>
       <Pressable accessibilityRole="button">
-        <Link href="/(modal)/deer-page">{YES}</Link>
+        <Link href="/(stepper-wizard)/deer-page">{YES}</Link>
       </Pressable>
       <Pressable accessibilityRole="button">
-        <Link href="/(modal)/deer-page">{NO}</Link>
+        <Link href="/(stepper-wizard)/deer-page">{NO}</Link>
       </Pressable>
     </View>
   );

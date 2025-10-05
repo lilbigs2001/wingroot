@@ -7,3 +7,5 @@ appId: com.joebigelow.wingroot
 - assertVisible: "Does your space get full sun, partial sun, or shade?"
 - tapOn: "Yes"
 - assertVisible: "Are deer eating your vegetation a concern?"
+- tapOn: "Yes"
+- assertVisible: "Are you looking to plant trees and/or shrubs?"

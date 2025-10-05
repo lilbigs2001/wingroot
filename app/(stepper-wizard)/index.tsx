@@ -7,10 +7,10 @@ const SoilMoisturePage = () => {
     <View>
       <Text>{SOIL_MOISTURE_QUESTION}</Text>
       <Pressable accessibilityRole="button">
-        <Link href="/(modal)/sun-page">{YES}</Link>
+        <Link href="/(stepper-wizard)/sun-page">{YES}</Link>
       </Pressable>
       <Pressable accessibilityRole="button">
-        <Link href="/(modal)/sun-page">{NO}</Link>
+        <Link href="/(stepper-wizard)/sun-page">{NO}</Link>
       </Pressable>
     </View>
   );

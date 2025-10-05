@@ -1,10 +1,10 @@
-import { DEER_QUESTION, NO, YES } from "@/constants";
+import { NO, TREES_AND_SHRUBS_QUESTION, YES } from "@/constants";
 import { Pressable, Text, View } from "react-native";
 
-const DeerPage = () => {
+const TreesAndShrubsPage = () => {
   return (
     <View>
-      <Text>{DEER_QUESTION}</Text>
+      <Text>{TREES_AND_SHRUBS_QUESTION}</Text>
       <Pressable accessibilityRole="button">
         <Text>{YES}</Text>
       </Pressable>
@@ -15,4 +15,4 @@ const DeerPage = () => {
   );
 };
 
-export default DeerPage;
+export default TreesAndShrubsPage;

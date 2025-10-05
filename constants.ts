@@ -11,3 +11,5 @@ export const NO = "No";
 export const SUN_QUESTION =
   "Does your space get full sun, partial sun, or shade?";
 export const DEER_QUESTION = "Are deer eating your vegetation a concern?";
+export const TREES_AND_SHRUBS_QUESTION =
+  "Are you looking to plant trees and/or shrubs?";
