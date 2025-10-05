@@ -1,7 +1,7 @@
-import SoilMoisturePage from "@/app/(modal)";
-import DeerPage from "@/app/(modal)/deer-page";
-import SunPage from "@/app/(modal)/sun-page";
-import TreesAndShrubsPage from "@/app/(modal)/trees-and-shrubs-page";
+import SoilMoisturePage from "@/app/(stepper-wizard)";
+import DeerPage from "@/app/(stepper-wizard)/deer-page";
+import SunPage from "@/app/(stepper-wizard)/sun-page";
+import TreesAndShrubsPage from "@/app/(stepper-wizard)/trees-and-shrubs-page";
 import {
   DEER_QUESTION,
   NO,
