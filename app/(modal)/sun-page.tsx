@@ -1,9 +1,16 @@
-import { Text, View } from "react-native";
+import { NO, SUN_QUESTION, YES } from "@/constants";
+import { Pressable, Text, View } from "react-native";
 
 const SunPage = () => {
   return (
     <View>
-      <Text>Does your space get full sun, partial sun, or shade?</Text>
+      <Text>{SUN_QUESTION}</Text>
+      <Pressable accessibilityRole="button">
+        <Text>{YES}</Text>
+      </Pressable>
+      <Pressable accessibilityRole="button">
+        <Text>{NO}</Text>
+      </Pressable>
     </View>
   );
 };

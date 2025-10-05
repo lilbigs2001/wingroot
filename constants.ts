@@ -8,3 +8,5 @@ export const SOIL_MOISTURE_QUESTION =
   "Is your soil dry, dry to moist, moist, moist to wet, wet, dry to wet, or a combination?";
 export const YES = "Yes";
 export const NO = "No";
+export const SUN_QUESTION =
+  "Does your space get full sun, partial sun, or shade?";
