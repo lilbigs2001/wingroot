@@ -1,9 +1,8 @@
 import { RadioButtons } from "@/components/RadioButtons";
-import { YES } from "@/constants";
+import { NO, YES } from "@/constants";
 import { render, screen, userEvent } from "@testing-library/react-native";
 
 /*
-  - Selecting selected button does not unselect it
   - Renders multiple buttons
   - Only selects one button at a time
 */
@@ -26,4 +25,12 @@ it("does not unselect selected button if re-pressed", async () => {
   expect(yesRadio).toBeChecked();
   await user.press(yesRadio);
   expect(screen.getByRole("radio", { name: YES })).toBeChecked();
+});
+
+it("renders multiple buttons", () => {
+  const MAYBE = "Maybe";
+  render(<RadioButtons options={[YES, NO, MAYBE]} />);
+  expect(screen.getByRole("radio", { name: YES })).toBeOnTheScreen();
+  expect(screen.getByRole("radio", { name: NO })).toBeOnTheScreen();
+  expect(screen.getByRole("radio", { name: MAYBE })).toBeOnTheScreen();
 });
