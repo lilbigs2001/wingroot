@@ -1,8 +1,11 @@
 import Results from "@/app/results";
 import {
+  DEER_RESISTANT,
   DRY,
   FULL_SHADE,
+  FULL_SUN,
   MOIST,
+  PARTIAL_SUN,
   WET,
   YOUR_CUSTOMIZED_PLANTING_LIST,
 } from "@/constants";
@@ -68,6 +71,31 @@ it("filters plants based on sun level", () => {
     (plant) => !plant.sun.includes(FULL_SHADE),
   );
   for (const plant of sunnyPlants) {
+    expect(
+      screen.queryByRole("text", { name: plant.commonName }),
+    ).not.toBeOnTheScreen();
+  }
+});
+
+it("filters plants based on deer resistance", () => {
+  render(
+    <StepperContext.Provider
+      value={{
+        soilMoisture: [DRY, MOIST, WET],
+        sunLevel: [FULL_SUN, PARTIAL_SUN, FULL_SHADE],
+        deerThreat: true,
+        shrubsAndTrees: false,
+      }}
+    >
+      <Results />
+    </StepperContext.Provider>,
+  );
+
+  const nonDeerResistantPlants = greatLakesPlantList.filter((plant) => {
+    if (plant.additionalDetails)
+      return !plant.additionalDetails.includes(DEER_RESISTANT);
+  });
+  for (const plant of nonDeerResistantPlants) {
     expect(
       screen.queryByRole("text", { name: plant.commonName }),
     ).not.toBeOnTheScreen();
