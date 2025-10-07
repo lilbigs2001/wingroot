@@ -17,7 +17,7 @@ const StepperWizardStep = ({
     <View>
       <Text>{question}</Text>
       {radioOptions && <RadioButtons options={radioOptions} />}
-      <Pressable accessibilityRole="button">
+      <Pressable disabled accessibilityRole="button">
         <Link replace={replace} href={link}>
           Next
         </Link>

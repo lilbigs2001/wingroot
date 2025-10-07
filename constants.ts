@@ -4,6 +4,7 @@ export const PLAN_YOUR_GARDEN = "Plan your garden";
 export const REGIONAL_DISCLAIMER =
   "(Plant suggestions are currently tailored for the Great Lakes region — more regions coming soon!)";
 export const HELP_US_IMPROVE = "Help us improve!";
+export const NEXT = "Next";
 export const SOIL_MOISTURE_QUESTION =
   "Is your soil dry, moist, or wet? (Select all that apply)";
 export const YES = "Yes";
