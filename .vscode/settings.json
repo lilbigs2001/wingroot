@@ -4,5 +4,6 @@
     "source.organizeImports": "explicit",
     "source.sortMembers": "explicit"
   },
-  "cSpell.words": ["joebigelow", "WINGROOT", "agastache", "scrophulariifolia"]
+  "cSpell.words": ["joebigelow", "WINGROOT", "agastache", "scrophulariifolia"],
+  "java.configuration.updateBuildConfiguration": "interactive"
 }
