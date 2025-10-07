@@ -6,9 +6,9 @@ it("selecting radio button checks it", async () => {
   const user = userEvent.setup();
   render(<RadioButtons options={[YES]} />);
   const yesRadio = screen.getByRole("radio", { name: YES });
-  expect(yesRadio).not.toBeChecked();
+  expect(yesRadio).not.toBeSelected();
   await user.press(yesRadio);
-  expect(screen.getByRole("radio", { name: YES })).toBeChecked();
+  expect(screen.getByRole("radio", { name: YES })).toBeSelected();
 });
 
 it("does not unselect selected button if re-pressed", async () => {
@@ -17,9 +17,9 @@ it("does not unselect selected button if re-pressed", async () => {
 
   await user.press(screen.getByRole("radio", { name: YES }));
   const yesRadio = screen.getByRole("radio", { name: YES });
-  expect(yesRadio).toBeChecked();
+  expect(yesRadio).toBeSelected();
   await user.press(yesRadio);
-  expect(screen.getByRole("radio", { name: YES })).toBeChecked();
+  expect(screen.getByRole("radio", { name: YES })).toBeSelected();
 });
 
 it("renders multiple buttons", () => {
@@ -35,12 +35,12 @@ it("only selects one button at a time", async () => {
   render(<RadioButtons options={[YES, NO]} />);
 
   await user.press(screen.getByRole("radio", { name: YES }));
-  expect(screen.getByRole("radio", { name: YES })).toBeChecked();
-  expect(screen.getByRole("radio", { name: NO })).not.toBeChecked();
+  expect(screen.getByRole("radio", { name: YES })).toBeSelected();
+  expect(screen.getByRole("radio", { name: NO })).not.toBeSelected();
 
   await user.press(screen.getByRole("radio", { name: NO }));
-  expect(screen.getByRole("radio", { name: NO })).toBeChecked();
-  expect(screen.getByRole("radio", { name: YES })).not.toBeChecked();
+  expect(screen.getByRole("radio", { name: NO })).toBeSelected();
+  expect(screen.getByRole("radio", { name: YES })).not.toBeSelected();
 });
 
 it("calls onChange prop when value changes", async () => {

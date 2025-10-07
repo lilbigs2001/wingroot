@@ -8,18 +8,18 @@ export const RadioButtons = ({
   options: string[];
   onChange?: () => void;
 }) => {
-  const [checked, setChecked] = useState("");
+  const [selected, setSelected] = useState("");
   return (
     <View>
       {options.map((option) => (
         <Pressable
           key={option}
           onPress={() => {
-            setChecked(option);
+            setSelected(option);
             if (onChange) onChange();
           }}
           accessibilityRole="radio"
-          accessibilityState={{ checked: checked === option }}
+          accessibilityState={{ selected: selected === option }}
         >
           <Text>{option}</Text>
         </Pressable>
