@@ -3,8 +3,7 @@ import { NO, YES } from "@/constants";
 import { render, screen, userEvent } from "@testing-library/react-native";
 
 /*
-  - Renders multiple buttons
-  - Only selects one button at a time
+  - Includes a visible indicator of selection
 */
 
 it("selecting radio button checks it", async () => {
@@ -33,4 +32,17 @@ it("renders multiple buttons", () => {
   expect(screen.getByRole("radio", { name: YES })).toBeOnTheScreen();
   expect(screen.getByRole("radio", { name: NO })).toBeOnTheScreen();
   expect(screen.getByRole("radio", { name: MAYBE })).toBeOnTheScreen();
+});
+
+it("only selects one button at a time", async () => {
+  const user = userEvent.setup();
+  render(<RadioButtons options={[YES, NO]} />);
+
+  await user.press(screen.getByRole("radio", { name: YES }));
+  expect(screen.getByRole("radio", { name: YES })).toBeChecked();
+  expect(screen.getByRole("radio", { name: NO })).not.toBeChecked();
+
+  await user.press(screen.getByRole("radio", { name: NO }));
+  expect(screen.getByRole("radio", { name: NO })).toBeChecked();
+  expect(screen.getByRole("radio", { name: YES })).not.toBeChecked();
 });
