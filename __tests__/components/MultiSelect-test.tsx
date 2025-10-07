@@ -1,8 +1,3 @@
-/*
-  - selecting checkbox checks it
-  - selects multiple checkboxes
-*/
-
 import { MultiSelect } from "@/components/MultiSelect";
 import { DRY, MOIST, WET } from "@/constants";
 import { render, screen, userEvent } from "@testing-library/react-native";

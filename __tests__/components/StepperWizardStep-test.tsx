@@ -1,10 +1,6 @@
 import StepperWizardStep from "@/components/StepperWizardStep";
-import { NEXT, NO, YES } from "@/constants";
+import { FULL_SHADE, FULL_SUN, NEXT, NO, PARTIAL_SUN, YES } from "@/constants";
 import { render, screen, userEvent } from "@testing-library/react-native";
-
-/*
-  - only allows either radio buttons or multi-select to render, not both
-*/
 
 it("has correct text", () => {
   renderStepperWizard();
@@ -46,20 +42,24 @@ it(`selecting radio button enables ${NEXT} button`, async () => {
   expect(screen.getByRole("button", { name: NEXT })).toBeEnabled();
 });
 
-// it("displays multi-option selectors", () => {
-//   render(
-//     <StepperWizardStep
-//       question={SAMPLE_QUESTION}
-//       link="/"
-//       multiSelect={[FULL_SUN, PARTIAL_SUN, FULL_SHADE]}
-//     />,
-//   );
-//   expect(screen.getByRole("checkbox", { name: FULL_SUN })).toBeOnTheScreen();
-//   expect(screen.getByRole("checkbox", { name: PARTIAL_SUN })).toBeOnTheScreen();
-//   expect(screen.getByRole("checkbox", { name: FULL_SHADE })).toBeOnTheScreen();
-// });
+it("displays multi-option selectors", () => {
+  render(
+    <StepperWizardStep
+      question={SAMPLE_QUESTION}
+      link="/"
+      multiSelectOptions={[FULL_SUN, PARTIAL_SUN, FULL_SHADE]}
+    />,
+  );
+  expect(screen.getByRole("checkbox", { name: FULL_SUN })).toBeOnTheScreen();
+  expect(screen.getByRole("checkbox", { name: PARTIAL_SUN })).toBeOnTheScreen();
+  expect(screen.getByRole("checkbox", { name: FULL_SHADE })).toBeOnTheScreen();
+});
 
 const renderStepperWizard = () => {
   render(<StepperWizardStep question={SAMPLE_QUESTION} link="/" />);
 };
 const SAMPLE_QUESTION = "Sample Question";
+
+/*
+  - only allows either radio buttons or multi-select to render, not both
+*/
