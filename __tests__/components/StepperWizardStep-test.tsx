@@ -1,6 +1,6 @@
 import StepperWizardStep from "@/components/StepperWizardStep";
 import { NEXT, NO, YES } from "@/constants";
-import { render, screen } from "@testing-library/react-native";
+import { render, screen, userEvent } from "@testing-library/react-native";
 
 /*
   - only allows either radio buttons or multi-select to render, not both
@@ -31,6 +31,19 @@ it("displays radio buttons", () => {
   );
   expect(screen.getByRole("radio", { name: YES })).toBeOnTheScreen();
   expect(screen.getByRole("radio", { name: NO })).toBeOnTheScreen();
+});
+
+it(`selecting radio button enables ${NEXT} button`, async () => {
+  const user = userEvent.setup();
+  render(
+    <StepperWizardStep
+      question={SAMPLE_QUESTION}
+      link="/"
+      radioOptions={[YES, NO]}
+    />,
+  );
+  await user.press(screen.getByRole("radio", { name: NO }));
+  expect(screen.getByRole("button", { name: NEXT })).toBeEnabled();
 });
 
 // it("displays multi-option selectors", () => {

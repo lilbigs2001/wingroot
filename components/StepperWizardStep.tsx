@@ -1,4 +1,5 @@
 import { Href, Link } from "expo-router";
+import { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { RadioButtons } from "./RadioButtons";
 
@@ -13,11 +14,17 @@ const StepperWizardStep = ({
   radioOptions?: string[];
   replace?: boolean;
 }) => {
+  const [nextDisabled, setNextDisabled] = useState(true);
   return (
     <View>
       <Text>{question}</Text>
-      {radioOptions && <RadioButtons options={radioOptions} />}
-      <Pressable disabled accessibilityRole="button">
+      {radioOptions && (
+        <RadioButtons
+          options={radioOptions}
+          onChange={() => setNextDisabled(false)}
+        />
+      )}
+      <Pressable disabled={nextDisabled} accessibilityRole="button">
         <Link replace={replace} href={link}>
           Next
         </Link>

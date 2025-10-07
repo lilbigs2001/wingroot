@@ -42,3 +42,14 @@ it("only selects one button at a time", async () => {
   expect(screen.getByRole("radio", { name: NO })).toBeChecked();
   expect(screen.getByRole("radio", { name: YES })).not.toBeChecked();
 });
+
+it("calls onChange prop when value changes", async () => {
+  const user = userEvent.setup();
+  const onChangeMock = jest.fn();
+
+  render(<RadioButtons options={[YES, NO]} onChange={onChangeMock} />);
+
+  expect(onChangeMock).not.toHaveBeenCalled();
+  await user.press(screen.getByRole("radio", { name: YES }));
+  expect(onChangeMock).toHaveBeenCalled();
+});
