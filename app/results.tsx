@@ -7,8 +7,17 @@ import { Text, View } from "react-native";
 const Results = () => {
   const userSelections = useContext(StepperContext);
   const customPlantList = greatLakesPlantList.filter((plant) => {
+    let hasSoilValue = false;
     for (const moistureLevel of plant.soil) {
       if (userSelections.soilMoisture.includes(moistureLevel)) {
+        hasSoilValue = true;
+        break;
+      }
+    }
+    if (!hasSoilValue) return false;
+
+    for (const sunLevel of plant.sun) {
+      if (userSelections.sunLevel.includes(sunLevel)) {
         return true;
       }
     }

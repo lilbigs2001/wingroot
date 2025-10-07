@@ -1,5 +1,11 @@
 import Results from "@/app/results";
-import { MOIST, WET, YOUR_CUSTOMIZED_PLANTING_LIST } from "@/constants";
+import {
+  DRY,
+  FULL_SHADE,
+  MOIST,
+  WET,
+  YOUR_CUSTOMIZED_PLANTING_LIST,
+} from "@/constants";
 import { StepperContext } from "@/context/StepperContext";
 import { greatLakesPlantList } from "@/great-lakes-plant-list";
 import { render, screen } from "@testing-library/react-native";
@@ -38,6 +44,30 @@ it("filters plants based on user choice of soil type", () => {
     (plant) => !plant.soil.includes(MOIST) && !plant.soil.includes(WET),
   );
   for (const plant of drySoilPlants) {
+    expect(
+      screen.queryByRole("text", { name: plant.commonName }),
+    ).not.toBeOnTheScreen();
+  }
+});
+
+it("filters plants based on sun level", () => {
+  render(
+    <StepperContext.Provider
+      value={{
+        soilMoisture: [DRY, MOIST, WET],
+        sunLevel: [FULL_SHADE],
+        deerThreat: false,
+        shrubsAndTrees: false,
+      }}
+    >
+      <Results />
+    </StepperContext.Provider>,
+  );
+
+  const sunnyPlants = greatLakesPlantList.filter(
+    (plant) => !plant.sun.includes(FULL_SHADE),
+  );
+  for (const plant of sunnyPlants) {
     expect(
       screen.queryByRole("text", { name: plant.commonName }),
     ).not.toBeOnTheScreen();
