@@ -1,4 +1,5 @@
 import StepperWizardStep from "@/components/StepperWizardStep";
+import { NO, YES } from "@/constants";
 import { render, screen } from "@testing-library/react-native";
 
 it("has correct text", () => {
@@ -11,13 +12,17 @@ it('displays a "Next" button', () => {
   expect(screen.getByRole("button", { name: "Next" })).toBeOnTheScreen();
 });
 
-// it("displays radio buttons", () => {
-//   render(
-//     <StepperWizardStep question={SAMPLE_QUESTION} link="/" radio={true} />,
-//   );
-//   expect(screen.getByRole("radio", { name: YES })).toBeOnTheScreen();
-//   expect(screen.getByRole("radio", { name: NO })).toBeOnTheScreen();
-// });
+it("displays radio buttons", () => {
+  render(
+    <StepperWizardStep
+      question={SAMPLE_QUESTION}
+      link="/"
+      radioOptions={[YES, NO]}
+    />,
+  );
+  expect(screen.getByRole("radio", { name: YES })).toBeOnTheScreen();
+  expect(screen.getByRole("radio", { name: NO })).toBeOnTheScreen();
+});
 
 // it("displays multi-option selectors", () => {
 //   render(

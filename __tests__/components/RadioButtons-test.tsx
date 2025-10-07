@@ -2,10 +2,6 @@ import { RadioButtons } from "@/components/RadioButtons";
 import { NO, YES } from "@/constants";
 import { render, screen, userEvent } from "@testing-library/react-native";
 
-/*
-  - Includes a visible indicator of selection
-*/
-
 it("selecting radio button checks it", async () => {
   const user = userEvent.setup();
   render(<RadioButtons options={[YES]} />);
