@@ -1,7 +1,11 @@
-import { Pressable, Text } from "react-native";
+import { Pressable, Text, View } from "react-native";
 
 export const MultiSelect = ({ options }: { options: string[] }) => (
-  <Pressable accessibilityRole="checkbox">
-    <Text>{options[0]}</Text>
-  </Pressable>
+  <View>
+    {options.map((option) => (
+      <Pressable key={option} accessibilityRole="checkbox">
+        <Text>{option}</Text>
+      </Pressable>
+    ))}
+  </View>
 );
