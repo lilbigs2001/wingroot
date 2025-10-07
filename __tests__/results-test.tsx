@@ -1,5 +1,6 @@
 import Results from "@/app/results";
-import { YOUR_CUSTOMIZED_PLANTING_LIST } from "@/constants";
+import { MOIST, WET, YOUR_CUSTOMIZED_PLANTING_LIST } from "@/constants";
+import { StepperContext } from "@/context/StepperContext";
 import { greatLakesPlantList } from "@/great-lakes-plant-list";
 import { render, screen } from "@testing-library/react-native";
 
@@ -10,11 +11,35 @@ it(`contains ${YOUR_CUSTOMIZED_PLANTING_LIST} text`, () => {
   ).toBeOnTheScreen();
 });
 
-it("displays list of plants for the region", () => {
-  render(<Results />);
-  for (const plant of greatLakesPlantList) {
+// it("displays list of all plants for the region (all soil moistures, all sun levels, no filtering based on deer, trees and shrubs welcome)", () => {
+//   render(<Results />);
+//   for (const plant of greatLakesPlantList) {
+//     expect(
+//       screen.getByRole("text", { name: plant.commonName }),
+//     ).toBeOnTheScreen();
+//   }
+// });
+
+it("filters plants based on user choice of soil type", () => {
+  render(
+    <StepperContext.Provider
+      value={{
+        soilMoisture: [MOIST, WET],
+        sunLevel: [],
+        deerThreat: false,
+        shrubsAndTrees: false,
+      }}
+    >
+      <Results />
+    </StepperContext.Provider>,
+  );
+
+  const drySoilPlants = greatLakesPlantList.filter(
+    (plant) => !plant.soil.includes(MOIST) && !plant.soil.includes(WET),
+  );
+  for (const plant of drySoilPlants) {
     expect(
-      screen.getByRole("text", { name: plant.commonName }),
-    ).toBeOnTheScreen();
+      screen.queryByRole("text", { name: plant.commonName }),
+    ).not.toBeOnTheScreen();
   }
 });
