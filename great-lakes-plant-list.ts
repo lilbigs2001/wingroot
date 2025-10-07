@@ -1,10 +1,6 @@
 import {
-  AGASTACHE_SCROPHULARIIFOLIA,
-  ALLEGHENY_SERVICEBERRY,
-  AMELANCHIER_LAEVIS,
   ANNUAL,
   APR,
-  ASCLEPIAS_INCARNATA,
   AUG,
   BENEFICIAL_INSECTS,
   BIENNIAL,
@@ -28,21 +24,19 @@ import {
   OCT,
   PARTIAL_SUN,
   PERENNIAL,
-  PURPLE_GIANT_HYSSOP,
   SEDGE,
   SEP,
   SHRUB,
   SPECIALIST_BEE,
-  SWAMP_MILKWEED,
   TREE,
   WET,
 } from "./constants";
 import { Plant } from "./types";
 
-export const plantList: Plant[] = [
+export const greatLakesPlantList: Plant[] = [
   {
-    scientificName: AGASTACHE_SCROPHULARIIFOLIA,
-    commonName: PURPLE_GIANT_HYSSOP,
+    scientificName: "Agastache scrophulariifolia",
+    commonName: "Purple giant hyssop",
     bloom: [JUL, AUG, SEP],
     life: [PERENNIAL],
     form: [FORB],
@@ -51,8 +45,8 @@ export const plantList: Plant[] = [
     additionalDetails: [BENEFICIAL_INSECTS, BUMBLE_BEE],
   },
   {
-    scientificName: AMELANCHIER_LAEVIS,
-    commonName: ALLEGHENY_SERVICEBERRY,
+    scientificName: "Amelanchier laevis",
+    commonName: "Allegheny serviceberry",
     bloom: [MAR, APR, MAY],
     life: [PERENNIAL],
     form: [TREE, SHRUB],
@@ -61,8 +55,8 @@ export const plantList: Plant[] = [
     additionalDetails: [LARVAL_HOST, BENEFICIAL_INSECTS],
   },
   {
-    scientificName: ASCLEPIAS_INCARNATA,
-    commonName: SWAMP_MILKWEED,
+    scientificName: "Asclepias incarnata",
+    commonName: "Swamp milkweed",
     bloom: [JUN, JUL, AUG],
     life: [PERENNIAL],
     form: [FORB],

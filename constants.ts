@@ -16,16 +16,6 @@ export const TREES_AND_SHRUBS_QUESTION =
   "Are you looking to plant trees and/or shrubs?";
 export const YOUR_CUSTOMIZED_PLANTING_LIST = "Your Customized Planting List";
 
-// Scientific names
-export const AGASTACHE_SCROPHULARIIFOLIA = "Agastache scrophulariifolia";
-export const AMELANCHIER_LAEVIS = "Amelanchier laevis";
-export const ASCLEPIAS_INCARNATA = "Asclepias incarnata";
-
-// Common names
-export const PURPLE_GIANT_HYSSOP = "Purple giant hyssop";
-export const ALLEGHENY_SERVICEBERRY = "Allegheny serviceberry";
-export const SWAMP_MILKWEED = "Swamp milkweed";
-
 export const JAN = "Jan";
 export const FEB = "Feb";
 export const MAR = "Mar";
