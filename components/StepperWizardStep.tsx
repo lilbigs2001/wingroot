@@ -21,13 +21,14 @@ const StepperWizardStep = ({
   return (
     <View>
       <Text>{question}</Text>
-      {radioOptions && (
+      {radioOptions ? (
         <RadioButtons
           options={radioOptions}
           onChange={() => setNextDisabled(false)}
         />
-      )}
-      {multiSelectOptions && <MultiSelect options={multiSelectOptions} />}
+      ) : multiSelectOptions ? (
+        <MultiSelect options={multiSelectOptions} />
+      ) : null}
       <Pressable disabled={nextDisabled} accessibilityRole="button">
         <Link replace={replace} href={link}>
           Next

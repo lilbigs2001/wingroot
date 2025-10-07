@@ -55,6 +55,19 @@ it("displays multi-option selectors", () => {
   expect(screen.getByRole("checkbox", { name: FULL_SHADE })).toBeOnTheScreen();
 });
 
+it("only allows either radio buttons or multi-select to render, not both", () => {
+  render(
+    <StepperWizardStep
+      question={SAMPLE_QUESTION}
+      link="/"
+      radioOptions={[YES]}
+      multiSelectOptions={[FULL_SUN]}
+    />,
+  );
+  expect(screen.getByRole("radio")).toBeOnTheScreen();
+  expect(screen.queryByRole("checkbox")).not.toBeOnTheScreen();
+});
+
 const renderStepperWizard = () => {
   render(<StepperWizardStep question={SAMPLE_QUESTION} link="/" />);
 };
