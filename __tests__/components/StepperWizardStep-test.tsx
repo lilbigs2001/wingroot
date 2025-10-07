@@ -72,7 +72,3 @@ const renderStepperWizard = () => {
   render(<StepperWizardStep question={SAMPLE_QUESTION} link="/" />);
 };
 const SAMPLE_QUESTION = "Sample Question";
-
-/*
-  - only allows either radio buttons or multi-select to render, not both
-*/
