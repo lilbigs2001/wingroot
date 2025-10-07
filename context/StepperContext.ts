@@ -1,12 +1,7 @@
-import { SoilMoisture, SunLevel } from "@/types";
+import { PlantFilters } from "@/types";
 import { createContext } from "react";
 
-export const StepperContext = createContext<{
-  soilMoisture: SoilMoisture[];
-  sunLevel: SunLevel[];
-  deerThreat: boolean;
-  shrubsAndTrees: boolean;
-}>({
+export const StepperContext = createContext<PlantFilters>({
   soilMoisture: [],
   sunLevel: [],
   deerThreat: false,

@@ -1,25 +1,24 @@
-import { DEER_RESISTANT, YOUR_CUSTOMIZED_PLANTING_LIST } from "@/constants";
+import {
+  DEER_RESISTANT,
+  SHRUB,
+  TREE,
+  YOUR_CUSTOMIZED_PLANTING_LIST,
+} from "@/constants";
 import { StepperContext } from "@/context/StepperContext";
 import { greatLakesPlantList } from "@/great-lakes-plant-list";
-import { SoilMoisture, SunLevel } from "@/types";
+import { Plant, SoilMoisture, SunLevel } from "@/types";
 import { useContext } from "react";
 import { Text, View } from "react-native";
 
 const Results = () => {
   const userSelections = useContext(StepperContext);
-  const customPlantList = greatLakesPlantList.filter((plant) => {
-    const { soilMoisture, sunLevel, deerThreat } = userSelections;
+  const { soilMoisture, sunLevel, deerThreat, shrubsAndTrees } = userSelections;
 
-    if (!matchesSelections(soilMoisture, plant.soil)) return false;
-    if (!matchesSelections(sunLevel, plant.sun)) return false;
-    if (deerThreat) {
-      if (
-        !plant.additionalDetails ||
-        !plant.additionalDetails?.includes(DEER_RESISTANT)
-      )
-        return false;
-    }
-    return true;
+  const customPlantList = greatLakesPlantList.filter((plant) => {
+    filterBySoil(plant, soilMoisture) &&
+      filterBySun(plant, sunLevel) &&
+      filterByDeer(plant, deerThreat) &&
+      filterByForm(plant, shrubsAndTrees);
   });
 
   return (
@@ -34,14 +33,16 @@ const Results = () => {
 
 export default Results;
 
+const filterBySoil = (plant: Plant, selections: SoilMoisture[]) =>
+  matchesSelections(selections, plant.soil);
+const filterBySun = (plant: Plant, selections: SunLevel[]) =>
+  matchesSelections(selections, plant.sun);
+const filterByDeer = (plant: Plant, deerThreat: boolean) =>
+  !deerThreat || plant.additionalDetails?.includes(DEER_RESISTANT);
+const filterByForm = (plant: Plant, shrubsAndTrees: boolean) =>
+  shrubsAndTrees || !plant.form.includes(SHRUB) || !plant.form.includes(TREE);
+
 const matchesSelections = <T extends SoilMoisture | SunLevel>(
   categorySelections: T[],
   plantAttributes: T[],
-) => {
-  for (const attribute of plantAttributes) {
-    if (categorySelections.includes(attribute)) {
-      return true;
-    }
-  }
-  return false;
-};
+) => plantAttributes.some((attr) => categorySelections.includes(attr));

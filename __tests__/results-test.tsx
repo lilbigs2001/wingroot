@@ -6,11 +6,14 @@ import {
   FULL_SUN,
   MOIST,
   PARTIAL_SUN,
+  SHRUB,
+  TREE,
   WET,
   YOUR_CUSTOMIZED_PLANTING_LIST,
 } from "@/constants";
 import { StepperContext } from "@/context/StepperContext";
 import { greatLakesPlantList } from "@/great-lakes-plant-list";
+import { Plant, PlantFilters } from "@/types";
 import { render, screen } from "@testing-library/react-native";
 
 it(`contains ${YOUR_CUSTOMIZED_PLANTING_LIST} text`, () => {
@@ -20,84 +23,62 @@ it(`contains ${YOUR_CUSTOMIZED_PLANTING_LIST} text`, () => {
   ).toBeOnTheScreen();
 });
 
-// it("displays list of all plants for the region (all soil moistures, all sun levels, no filtering based on deer, trees and shrubs welcome)", () => {
-//   render(<Results />);
-//   for (const plant of greatLakesPlantList) {
-//     expect(
-//       screen.getByRole("text", { name: plant.commonName }),
-//     ).toBeOnTheScreen();
-//   }
-// });
-
 it("filters plants based on user choice of soil type", () => {
-  render(
-    <StepperContext.Provider
-      value={{
-        soilMoisture: [MOIST, WET],
-        sunLevel: [],
-        deerThreat: false,
-        shrubsAndTrees: false,
-      }}
-    >
-      <Results />
-    </StepperContext.Provider>,
-  );
+  renderResultsPage({ soilMoisture: [MOIST, WET] });
 
   const drySoilPlants = greatLakesPlantList.filter(
     (plant) => !plant.soil.includes(MOIST) && !plant.soil.includes(WET),
   );
-  for (const plant of drySoilPlants) {
-    expect(
-      screen.queryByRole("text", { name: plant.commonName }),
-    ).not.toBeOnTheScreen();
-  }
+  checkThatOmittedPlantsAreNotRendered(drySoilPlants);
 });
 
 it("filters plants based on sun level", () => {
-  render(
-    <StepperContext.Provider
-      value={{
-        soilMoisture: [DRY, MOIST, WET],
-        sunLevel: [FULL_SHADE],
-        deerThreat: false,
-        shrubsAndTrees: false,
-      }}
-    >
-      <Results />
-    </StepperContext.Provider>,
-  );
+  renderResultsPage({ sunLevel: [FULL_SHADE] });
 
   const sunnyPlants = greatLakesPlantList.filter(
     (plant) => !plant.sun.includes(FULL_SHADE),
   );
-  for (const plant of sunnyPlants) {
-    expect(
-      screen.queryByRole("text", { name: plant.commonName }),
-    ).not.toBeOnTheScreen();
-  }
+  checkThatOmittedPlantsAreNotRendered(sunnyPlants);
 });
 
 it("filters plants based on deer resistance", () => {
-  render(
-    <StepperContext.Provider
-      value={{
-        soilMoisture: [DRY, MOIST, WET],
-        sunLevel: [FULL_SUN, PARTIAL_SUN, FULL_SHADE],
-        deerThreat: true,
-        shrubsAndTrees: false,
-      }}
-    >
-      <Results />
-    </StepperContext.Provider>,
-  );
+  renderResultsPage({ deerThreat: true });
 
   const nonDeerResistantPlants = greatLakesPlantList.filter((plant) => {
     if (plant.additionalDetails)
       return !plant.additionalDetails.includes(DEER_RESISTANT);
   });
-  for (const plant of nonDeerResistantPlants) {
+  checkThatOmittedPlantsAreNotRendered(nonDeerResistantPlants);
+});
+
+it("filters out shrubs and trees", () => {
+  renderResultsPage({ shrubsAndTrees: false });
+
+  const shrubsAndTrees = greatLakesPlantList.filter(
+    (plant) => plant.form.includes(SHRUB) || plant.form.includes(TREE),
+  );
+  checkThatOmittedPlantsAreNotRendered(shrubsAndTrees);
+});
+
+const renderResultsPage = (context?: Partial<PlantFilters>) => {
+  const defaultContext: PlantFilters = {
+    soilMoisture: [DRY, MOIST, WET],
+    sunLevel: [FULL_SUN, PARTIAL_SUN, FULL_SHADE],
+    deerThreat: false,
+    shrubsAndTrees: true,
+  };
+
+  render(
+    <StepperContext.Provider value={{ ...defaultContext, ...context }}>
+      <Results />
+    </StepperContext.Provider>,
+  );
+};
+
+const checkThatOmittedPlantsAreNotRendered = (omittedPlants: Plant[]) => {
+  for (const plant of omittedPlants) {
     expect(
       screen.queryByRole("text", { name: plant.commonName }),
     ).not.toBeOnTheScreen();
   }
-});
+};

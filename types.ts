@@ -40,3 +40,10 @@ type AdditionalDetails =
   | "nest materials"
   | "nest thatch"
   | "deer resistant";
+
+export type PlantFilters = {
+  soilMoisture: SoilMoisture[];
+  sunLevel: SunLevel[];
+  deerThreat: boolean;
+  shrubsAndTrees: boolean;
+};
