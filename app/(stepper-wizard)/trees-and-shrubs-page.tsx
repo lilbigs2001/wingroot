@@ -8,6 +8,7 @@ const TreesAndShrubsPage = () => {
       link="/results"
       replace={true}
       radioOptions={[YES, NO]}
+      title="shrubsAndTrees"
     />
   );
 };

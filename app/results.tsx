@@ -11,14 +11,16 @@ import { useContext } from "react";
 import { Text, View } from "react-native";
 
 const Results = () => {
-  const userSelections = useContext(StepperContext);
-  const { soilMoisture, sunLevel, deerThreat, shrubsAndTrees } = userSelections;
+  const { selections } = useContext(StepperContext);
+  const { soilMoisture, sunLevel, deerThreat, shrubsAndTrees } = selections;
 
   const customPlantList = greatLakesPlantList.filter((plant) => {
-    filterBySoil(plant, soilMoisture) &&
+    return (
+      filterBySoil(plant, soilMoisture) &&
       filterBySun(plant, sunLevel) &&
       filterByDeer(plant, deerThreat) &&
-      filterByForm(plant, shrubsAndTrees);
+      filterByForm(plant, shrubsAndTrees)
+    );
   });
 
   return (
@@ -40,9 +42,16 @@ const filterBySun = (plant: Plant, selections: SunLevel[]) =>
 const filterByDeer = (plant: Plant, deerThreat: boolean) =>
   !deerThreat || plant.additionalDetails?.includes(DEER_RESISTANT);
 const filterByForm = (plant: Plant, shrubsAndTrees: boolean) =>
-  shrubsAndTrees || !plant.form.includes(SHRUB) || !plant.form.includes(TREE);
+  shrubsAndTrees || (!plant.form.includes(SHRUB) && !plant.form.includes(TREE));
 
 const matchesSelections = <T extends SoilMoisture | SunLevel>(
   categorySelections: T[],
   plantAttributes: T[],
-) => plantAttributes.some((attr) => categorySelections.includes(attr));
+): boolean => {
+  const normalizedCategorySelections = categorySelections.map((selection) =>
+    selection.toLowerCase(),
+  );
+  return plantAttributes.some((attr) =>
+    normalizedCategorySelections.includes(attr),
+  );
+};

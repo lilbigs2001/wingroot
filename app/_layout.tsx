@@ -1,3 +1,4 @@
+import { StepperWizardProvider } from "@/context/StepperContext";
 import { Stack } from "expo-router";
 import "../global.css";
 
@@ -10,12 +11,14 @@ import "../global.css";
 
 export default function RootLayout() {
   return (
-    <Stack>
-      <Stack.Screen
-        name="(stepper-wizard)"
-        options={{ presentation: "modal" }}
-      />
-    </Stack>
+    <StepperWizardProvider>
+      <Stack>
+        <Stack.Screen
+          name="(stepper-wizard)"
+          options={{ presentation: "modal" }}
+        />
+      </Stack>
+    </StepperWizardProvider>
   );
 }
 

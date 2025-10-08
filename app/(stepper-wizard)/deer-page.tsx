@@ -7,6 +7,7 @@ const DeerPage = () => {
       question={DEER_QUESTION}
       link="/(stepper-wizard)/trees-and-shrubs-page"
       radioOptions={[YES, NO]}
+      title="deerThreat"
     />
   );
 };

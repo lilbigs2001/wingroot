@@ -1,25 +1,27 @@
-import { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 
 export const RadioButtons = ({
+  selectedButton,
+  setSelectedButton,
   options,
   onChange,
 }: {
+  selectedButton: string | null;
+  setSelectedButton: React.Dispatch<React.SetStateAction<string | null>>;
   options: string[];
   onChange?: () => void;
 }) => {
-  const [selected, setSelected] = useState("");
   return (
     <View>
       {options.map((option) => (
         <Pressable
           key={option}
           onPress={() => {
-            setSelected(option);
+            setSelectedButton(option);
             if (onChange) onChange();
           }}
           accessibilityRole="radio"
-          accessibilityState={{ selected: selected === option }}
+          accessibilityState={{ selected: option === selectedButton }}
         >
           <Text>{option}</Text>
         </Pressable>

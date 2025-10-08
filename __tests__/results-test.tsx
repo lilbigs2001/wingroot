@@ -69,7 +69,12 @@ const renderResultsPage = (context?: Partial<PlantFilters>) => {
   };
 
   render(
-    <StepperContext.Provider value={{ ...defaultContext, ...context }}>
+    <StepperContext.Provider
+      value={{
+        selections: { ...defaultContext, ...context },
+        updateSelections: () => {},
+      }}
+    >
       <Results />
     </StepperContext.Provider>,
   );

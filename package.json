@@ -12,7 +12,7 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:verbose": "jest --watchAll --verbose",
-    "e2e:test": "maestro test e2e/flows",
+    "e2e:test": "maestro test e2e/flows/",
     "clean:maestro": "rm -rf ~/.maestro/tests/*"
   },
   "dependencies": {

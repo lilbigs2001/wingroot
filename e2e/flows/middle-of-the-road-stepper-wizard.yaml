@@ -1,0 +1,20 @@
+appId: com.joebigelow.wingroot
+---
+- launchApp
+- assertVisible: "Plan your garden"
+- tapOn: "Plan your garden"
+- assertVisible: "Is your soil dry, moist, or wet? (Select all that apply)"
+- tapOn: "Moist"
+- tapOn: "Next"
+- assertVisible: "Does your space get full sun, partial sun, or full shade?"
+- tapOn: "Partial sun"
+- tapOn: "Next"
+- assertVisible: "Are deer eating your vegetation a concern?"
+- tapOn: "Yes"
+- tapOn: "Next"
+- assertVisible: "Are you looking to plant trees and/or shrubs?"
+- tapOn: "No"
+- tapOn: "Next"
+- assertVisible: "Your Customized Planting List"
+- assertVisible: "Wild bergamot"
+- assertNotVisible: "Hawthorn"
