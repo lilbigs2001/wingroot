@@ -1,5 +1,5 @@
 import StepperWizardStep from "@/components/StepperWizardStep";
-import { TREES_AND_SHRUBS_QUESTION } from "@/constants";
+import { NO, TREES_AND_SHRUBS_QUESTION, YES } from "@/constants";
 
 const TreesAndShrubsPage = () => {
   return (
@@ -7,6 +7,7 @@ const TreesAndShrubsPage = () => {
       question={TREES_AND_SHRUBS_QUESTION}
       link="/results"
       replace={true}
+      radioOptions={[YES, NO]}
     />
   );
 };
