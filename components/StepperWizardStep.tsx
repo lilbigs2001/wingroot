@@ -1,5 +1,5 @@
 import { Href, Link } from "expo-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { MultiSelect } from "./MultiSelect";
 import { RadioButtons } from "./RadioButtons";
@@ -18,6 +18,12 @@ const StepperWizardStep = ({
   multiSelectOptions?: string[];
 }) => {
   const [nextDisabled, setNextDisabled] = useState(true);
+  const [checkedState, setCheckedState] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (checkedState.length > 0) setNextDisabled(false);
+  }, [checkedState]);
+
   return (
     <View>
       <Text>{question}</Text>
@@ -27,7 +33,11 @@ const StepperWizardStep = ({
           onChange={() => setNextDisabled(false)}
         />
       ) : multiSelectOptions ? (
-        <MultiSelect options={multiSelectOptions} />
+        <MultiSelect
+          checkedState={checkedState}
+          setCheckedState={setCheckedState}
+          options={multiSelectOptions}
+        />
       ) : null}
       <Pressable disabled={nextDisabled} accessibilityRole="button">
         <Link replace={replace} href={link}>

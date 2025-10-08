@@ -1,21 +1,27 @@
-import { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 
-export const MultiSelect = ({ options }: { options: string[] }) => {
-  const [checked, setChecked] = useState<string[]>([]);
+export const MultiSelect = ({
+  options,
+  checkedState,
+  setCheckedState,
+}: {
+  options: string[];
+  checkedState: string[];
+  setCheckedState: (value: string[]) => void;
+}) => {
   return (
     <View>
       {options.map((option) => (
         <Pressable
           key={option}
           accessibilityRole="checkbox"
-          accessibilityState={{ checked: checked.includes(option) }}
+          accessibilityState={{ checked: checkedState?.includes(option) }}
           onPress={() => {
-            if (checked.includes(option)) {
-              setChecked((prev) => prev.filter((item) => item !== option));
+            if (checkedState.includes(option)) {
+              setCheckedState(checkedState.filter((item) => item !== option));
               return;
             }
-            setChecked((prev) => [...prev, option]);
+            setCheckedState([...checkedState, option]);
           }}
         >
           <Text>{option}</Text>
