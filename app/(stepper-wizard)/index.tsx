@@ -1,12 +1,12 @@
 import StepperWizardStep from "@/components/StepperWizardStep";
-import { NO, SOIL_MOISTURE_QUESTION, YES } from "@/constants";
+import { DRY, MOIST, SOIL_MOISTURE_QUESTION, WET } from "@/constants";
 
 const SoilMoisturePage = () => {
   return (
     <StepperWizardStep
       question={SOIL_MOISTURE_QUESTION}
       link="/(stepper-wizard)/sun-page"
-      radioOptions={[YES, NO]}
+      multiSelectOptions={[DRY, MOIST, WET]}
     />
   );
 };
