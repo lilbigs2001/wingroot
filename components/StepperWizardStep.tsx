@@ -22,6 +22,7 @@ const StepperWizardStep = ({
 
   useEffect(() => {
     if (checkedState.length > 0) setNextDisabled(false);
+    else setNextDisabled(true);
   }, [checkedState]);
 
   return (

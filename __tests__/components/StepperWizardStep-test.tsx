@@ -31,7 +31,7 @@ it(`selecting radio button enables ${NEXT} button`, async () => {
 });
 
 it("displays multi-select checkboxes", () => {
-  renderStepperPageWithMultipleCheckboxes();
+  renderStepperPageWithMultipleCheckboxes([FULL_SUN, PARTIAL_SUN, FULL_SHADE]);
   expect(screen.getByRole("checkbox", { name: FULL_SUN })).toBeOnTheScreen();
   expect(screen.getByRole("checkbox", { name: PARTIAL_SUN })).toBeOnTheScreen();
   expect(screen.getByRole("checkbox", { name: FULL_SHADE })).toBeOnTheScreen();
@@ -60,7 +60,7 @@ it("checks and unchecks multiple multi-select checkboxes", async () => {
     await user.press(screen.getByRole("checkbox", { name: FULL_SHADE }));
   };
 
-  renderStepperPageWithMultipleCheckboxes();
+  renderStepperPageWithMultipleCheckboxes([FULL_SUN, PARTIAL_SUN, FULL_SHADE]);
 
   await clickAllCheckboxes();
   expect(screen.getByRole("checkbox", { name: FULL_SUN })).toBeChecked();
@@ -75,15 +75,19 @@ it("checks and unchecks multiple multi-select checkboxes", async () => {
 
 it(`checking multi-select checkbox enables ${NEXT} button`, async () => {
   const user = userEvent.setup();
-  render(
-    <StepperWizardStep
-      question={SAMPLE_QUESTION}
-      link="/"
-      multiSelectOptions={[FULL_SUN]}
-    />,
-  );
+  renderStepperPageWithSingleCheckbox();
+
   await user.press(screen.getByRole("checkbox"));
   expect(screen.getByRole("button", { name: NEXT })).toBeEnabled();
+});
+
+it(`unchecking multi-select checkbox disables ${NEXT} button`, async () => {
+  const user = userEvent.setup();
+  renderStepperPageWithSingleCheckbox();
+
+  await user.press(screen.getByRole("checkbox"));
+  await user.press(screen.getByRole("checkbox"));
+  expect(screen.getByRole("button", { name: NEXT })).toBeDisabled();
 });
 
 it("only allows either radio buttons or multi-select to render, not both", () => {
@@ -114,12 +118,22 @@ const renderStepperPageWithRadioButtons = () => {
   );
 };
 
-const renderStepperPageWithMultipleCheckboxes = () => {
+const renderStepperPageWithMultipleCheckboxes = (options: string[]) => {
   render(
     <StepperWizardStep
       question={SAMPLE_QUESTION}
       link="/"
-      multiSelectOptions={[FULL_SUN, PARTIAL_SUN, FULL_SHADE]}
+      multiSelectOptions={options}
+    />,
+  );
+};
+
+const renderStepperPageWithSingleCheckbox = () => {
+  render(
+    <StepperWizardStep
+      question={SAMPLE_QUESTION}
+      link="/"
+      multiSelectOptions={[FULL_SUN]}
     />,
   );
 };
