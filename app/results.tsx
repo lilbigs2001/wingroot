@@ -8,7 +8,7 @@ import { StepperContext } from "@/context/StepperContext";
 import { greatLakesPlantList } from "@/great-lakes-plant-list";
 import { Plant, SoilMoisture, SunLevel } from "@/types";
 import { useContext } from "react";
-import { Text, View } from "react-native";
+import { FlatList, Text, View } from "react-native";
 
 const Results = () => {
   const { selections } = useContext(StepperContext);
@@ -24,11 +24,13 @@ const Results = () => {
   });
 
   return (
-    <View>
+    <View className="pb-20">
       <Text>{YOUR_CUSTOMIZED_PLANTING_LIST}</Text>
-      {customPlantList.map((plant) => {
-        return <Text key={plant.scientificName}>{plant.commonName}</Text>;
-      })}
+      <FlatList
+        data={customPlantList}
+        keyExtractor={(item) => item.scientificName}
+        renderItem={({ item }) => <Text>{item.commonName}</Text>}
+      />
     </View>
   );
 };
